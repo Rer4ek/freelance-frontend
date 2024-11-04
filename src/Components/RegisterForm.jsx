@@ -1,8 +1,10 @@
-import "../Styles/RegisterForm.css"
+import "../styles/AuthenticationForm.css"
+
+import { Container } from "react-bootstrap";
 
 export default function RegisterForm(){
     return (
-      <div className="container-register">
+    <Container className="container-auth">
         <div className="box">
             <h1 className="title">
                 Регистрация
@@ -20,12 +22,14 @@ export default function RegisterForm(){
                 <input type="password" placeholder="Повторите пароль" ></input>
             </div>
 
-            <button type="submit" className="button-register">Регистрация</button>
+            <button type="submit">Регистрация</button>
 
             <p className="error-message">Ошибка 😢</p>
 
 
         </div>
-      </div>
+    </Container>
     );
   }
+
+  

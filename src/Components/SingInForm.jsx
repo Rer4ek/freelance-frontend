@@ -1,9 +1,10 @@
-import "../Styles/SingInForm.css"
-import "../Styles/Form.css"
+import "../styles/AuthenticationForm.css"
+
+import { Container } from "react-bootstrap";
 
 export default function SingInForm(){
     return (
-      <div className="container-singin">
+      <Container className="container-auth">
         <div className="box">
             <h1 className="title">
                 Вход
@@ -17,12 +18,12 @@ export default function SingInForm(){
                 <input type="password" placeholder="Пароль" ></input>
             </div>
 
-            <button type="submit" className="button-singin">Войти</button>
+            <button type="submit" className="button-authentication">Войти</button>
 
             <p className="error-message">Ошибка 😢</p>
 
 
         </div>
-      </div>
+      </Container>
     );
   }

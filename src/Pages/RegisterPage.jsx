@@ -1,7 +1,9 @@
-import RegisterForm from "../Components/RegisterForm";
+import RegisterForm from "../components/RegisterForm";
 
 export default function RegisterPage(){
     return (
-      <RegisterForm></RegisterForm>   
+        <div className="authentication-background" id="wrapper">
+          <RegisterForm></RegisterForm>   
+        </div>
     );
   }

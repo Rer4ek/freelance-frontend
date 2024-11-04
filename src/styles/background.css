@@ -1,0 +1,11 @@
+.authentication-background {
+    background: url("../images/backgrounds/AuthBg.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+body {
+    background: #F4F6FB;
+    background-size: cover;
+    background-position: center;
+}

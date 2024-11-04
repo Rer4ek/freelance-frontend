@@ -1,7 +1,9 @@
-import SingInForm from "../Components/SingInForm";
+import SingInForm from "../components/SingInForm";
 
 export default function SingInPage(){
     return (
-      <SingInForm></SingInForm>   
+      <div className="authentication-background" id="wrapper">
+            <SingInForm></SingInForm>
+      </div>
     );
   }
