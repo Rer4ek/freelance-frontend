@@ -1,0 +1,21 @@
+.authentication-background {
+    background: url("../images/backgrounds/AuthBg.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.home-background {
+    transition-duration: 500ms;
+    background: url("../images/backgrounds/homeBg.jpg") no-repeat;
+    background-size: cover;
+    background-position:top;
+    background-color: #19191993;
+    background-blend-mode: overlay;
+    height: 75%;
+}
+
+body {
+    background: #F4F6FB;
+    background-size: cover;
+    background-position: center;
+}

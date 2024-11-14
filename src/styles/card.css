@@ -1,0 +1,31 @@
+.color-plate{
+    min-width: 10%;
+    height: 100%;
+}
+
+.default-card{
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+
+    height: 100px;
+    width: 300px;
+
+    border: 5px;
+    border-radius: 13px;
+    border: 2px solid #31313114;
+    background-color: white;
+
+
+    -webkit-box-shadow: 4px 7px 70px -32px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 4px 7px 70px -32px rgba(34, 60, 80, 0.2);
+    box-shadow: 4px 7px 70px -32px rgba(34, 60, 80, 0.2);
+}
+
+.card-child{
+    flex: 1;
+    padding: 15px;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: start;
+}

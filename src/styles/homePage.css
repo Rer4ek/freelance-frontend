@@ -1,0 +1,193 @@
+@media (max-width: 325px) {
+    .card-carousel{
+        padding: 0px 30px 30px 30px;
+        width: 200px;
+    }
+
+
+}
+
+@media (min-width: 325px) {
+    .orders-for-worker {
+        border-right: #2626261c solid 3px;
+    }
+}
+
+@media (max-width: 991px) {
+    .orders-for-worker {
+        border: none;
+    }
+}
+
+@media (min-width: 991px) {
+    .card-carousel{
+        padding: 0px 50px 50px 50px;
+        width: 350px;
+    }
+}
+
+.container-home {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.marquee-home{
+    display: block;
+    margin-top: 10px;
+    transition-duration: 500ms;
+}
+
+.marquee-block{
+    transition-duration: 500ms;
+    font-size: 20px;
+    border: 3px solid #414552;
+    color: #F4F6FB;
+    background-color: #414552;
+    border-radius: 13px;
+    padding: 0px 10px;
+    margin: 0px 5px;
+
+    &:hover{
+        background-color: #F4F6FB;
+        color: #414552;
+    }
+}
+
+.card-carousel{
+    max-width: 100%;
+    min-width: 100px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.best-worker-card{
+    height: 320px;
+
+    &:hover{
+        opacity: 0.9;
+    }
+}
+
+
+.best-workers-block {
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.best-worker-image{
+    width: 100%;
+    height: 50%;
+
+    object-fit: cover;
+    justify-self: center;
+    align-self: center;
+}
+
+.carousel-title {
+    font-size: 20px;
+}
+
+.orders-block {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    
+    height: 700px;
+
+    border-radius: 13px;
+    border: #eceff6 3px solid;
+    background-color: #eceff6; 
+
+    -moz-box-shadow: 0px 0px 30px -1px rgba(34, 60, 80, 0.3);
+    box-shadow: 0px 0px 30px -1px rgba(34, 60, 80, 0.3);
+
+}
+
+.orders-filter {
+
+    padding: 100px 15px;
+    display: flex;
+    flex-direction: column;
+
+    border-right: #eaeef7 3px solid;;
+
+    width: 30%;
+}
+
+.orders-list {
+    overflow:auto;
+}
+
+.search-input {
+    margin-top: 20px;
+    width: 100%;
+    flex: 0 1;
+}
+
+.select-filter {
+    margin-top: 20px;
+
+    flex: 0 1;
+}
+
+.filter-label {
+   font-size: 100%;
+   width: 100%;
+}
+
+.background-container{
+    display: flexbox;
+    align-items: center;
+    justify-content: center;
+   padding-top: 10%;
+}
+
+.home-title {
+    text-align: center;
+    color: #eaeef7;
+    display: block;
+}
+
+.count-vacants{
+    display: block;
+    text-align: center;
+    color: #eaeef7;
+}
+
+.orders {
+    margin-top: 200px;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.orders-for-worker {
+    flex: 1;
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+}
+
+.work-card{
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.orders-for-employer{
+    flex: 1;
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+}
