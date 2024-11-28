@@ -1,4 +1,4 @@
-import "../styles/AuthenticationForm.css"
+import "../styles/signForm.css"
 
 import { Container } from "react-bootstrap";
 
@@ -12,6 +12,7 @@ export default function SingInForm(){
 
             <div className="input-box">
                 <input type="text" placeholder="Логин" ></input>
+                <span>Это нетака</span>
             </div>
 
             <div className="input-box">

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import "../styles/card.css"
 
-function NewCard({ className="", children, color="#CD5C5C"}) {    
+function SimpleCard({ className="", children, color="#CD5C5C"}) {    
     return (
         <div className={"default-card " + {className}}>
             <div className='color-plate' style={{backgroundColor: color}}>
@@ -14,10 +14,10 @@ function NewCard({ className="", children, color="#CD5C5C"}) {
     );
 }
 
-NewCard.propTypes = {
+SimpleCard.propTypes = {
     className: PropTypes.string,
     children: PropTypes.node,
     color: PropTypes.string
 }
 
-export default NewCard
+export default SimpleCard

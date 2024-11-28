@@ -16,12 +16,12 @@ function App() {
         <Routes>
           <Route path='/' element={<Layout/>}>
             <Route index element={<HomePage/>}/>
-            <Route path='register' element={<RegisterPage/>}/>
             <Route path='singin' element={<SingInPage/>}></Route>
             <Route path='profile' element={<ProfilePage/>}></Route>
             <Route path='settings' element={<SingInPage/>}></Route>
             <Route path='my-orders' element={<SingInPage/>}></Route>
           </Route>
+          <Route path='register' element={<RegisterPage/>}/>
         </Routes>
       </>
   )

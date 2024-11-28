@@ -1,0 +1,103 @@
+.sign-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.sign-container .sign-form{
+
+    transition-duration: 300ms;
+
+    width: 25%;
+    max-width: 400px;
+    min-width: 100px;
+
+    flex: 1 0;
+
+    max-width: 350px;
+
+    background-color: #1f1f24;
+    padding: 35px;
+    border-radius: 23px;
+}
+
+.sign-form form{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.sign-form .input-box{
+    padding-top: 15px;
+    width: 100%;
+}
+
+.sign-form .input-box input{
+    width: 100%;
+    font-size: 20px;
+    
+    box-shadow: none;
+    border: none;
+    
+    border-radius: 5px;
+
+    padding-left: 10px;
+}
+
+.sign-form button{
+    transition-duration: 200ms;
+    margin-top: 20px;
+    width: 100%;
+    font-size: 20px;
+    
+    box-shadow: none;
+    border: none;
+    
+    border-radius: 5px;
+
+
+    &:hover{
+        opacity: 0.7;
+        background-color: transparent;
+        color: white;
+        border: solid 2px white;
+    }
+    
+}
+
+.sign-form h1 { 
+    color: white;
+    justify-self: center;
+    text-align: center;
+    margin-left: 10px;
+
+}
+
+.sign-form .error-message{
+    padding-top: 10px;
+    font-size: 15px;
+    color: rgb(255, 77, 77);
+}
+
+.sign-form .sign-header{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 10%;
+}
+
+.sign-form .back-arrow{
+    transition-duration: 300ms;
+    color: white;
+    font-size: 30px;
+
+    &:hover{
+        opacity: 0.5;
+    }
+}
+
