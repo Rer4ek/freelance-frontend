@@ -3,7 +3,8 @@ import "../styles/signForm.css"
 
 import { Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import RegistrationControllerProxy from "../services/RegistrationControllerProxy"
+import UserControllerProxy from "../controllers/UserControllerProxy";
+import AuthenticationControllerProxy from "../controllers/AuthenticationControllerProxy";
 
 
 export default function RegisterForm(){
@@ -18,7 +19,8 @@ export default function RegisterForm(){
 
     const [errorMessage, setError] = useState("")
     const navigate = useNavigate();
-    const controller = new RegistrationControllerProxy();
+    const userController = new UserControllerProxy();
+    const authenticationController = new AuthenticationControllerProxy();
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -33,8 +35,9 @@ export default function RegisterForm(){
         setError("");
 
         try {
-            const response = await controller.createUser(user);
+            const response = await userController.createUser(user);
             if (response === 200) {
+                await authenticationController.authentication({"login": user.login, "password": user.password});
                 navigate("/profile");
                 return true
             }
@@ -57,7 +60,7 @@ export default function RegisterForm(){
 
             <form onSubmit={onSubmit} method="post">
                 <div className="input-box">
-                    <input type="text" onChange={(e) => setUser({...user, login: e.target.value})} minLength="2" maxLength="32" inputMode="verbatim"  placeholder="Логин" required></input>
+                    <input type="text" onChange={(e) => setUser({...user, login: e.target.value})} minLength="2" maxLength="32" inputMode="verbatim" placeholder="Логин" required></input>
                 </div>
 
                 <div className="input-box">

@@ -1,14 +1,34 @@
 import '../Styles/Header.css';
 
 import demo from "../assets/react.svg";
-
+import UserControllerProxy from '../controllers/UserControllerProxy';
 import { Nav, Image, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { b64toBlob, GetFileList } from '../utils/Files';
+import { useEffect, useState } from 'react';
 
 export default function AuthorizedNavMenu() {
+
+    const [photo, setPhoto] = useState(demo);
+    const location = useLocation();
+
+    useEffect(() => {
+         const getUser = async () =>{
+            const controller = new UserControllerProxy();
+            const response = await controller.getUserBySession();
+    
+            const imageBlob = b64toBlob(response.photo.fileContents, response.photo.contentType);
+            const photoUrl = URL.createObjectURL(imageBlob);
+    
+            setPhoto(photoUrl);
+        }
+        
+        getUser();
+    },  [location.pathname])
+
     return (
         <Nav>
-            <NavDropdown title={<Image className="nav-image" src={demo} roundedCircle />} id="basic-nav-dropdown" menuVariant="dark" size="xl">
+            <NavDropdown title={<Image className="nav-image" src={photo} roundedCircle />} id="basic-nav-dropdown" menuVariant="dark" size="xl">
 
                 <NavDropdown.Item className="dropmenu-element" as={Link} to='/orders'>
                     Заказы

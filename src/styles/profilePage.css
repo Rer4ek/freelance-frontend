@@ -7,6 +7,17 @@
     .container-profile .edit-data{
         margin: 20px;
     }
+
+    .error-message{
+        text-align: center;
+    }
+}
+
+@media (min-width: 768px)
+{
+    .error-message{
+        text-align: left;
+    }
 }
 
 .container-profile{
@@ -56,8 +67,7 @@
 .container-profile .button{
     transition-duration: 500ms;
     border: solid 2px #414552;
-
-    margin: 10px 10px 10px 0;
+    margin: 10px 0;
     background-color: #414552;
     border-radius: 10px;
     color: #F4F6FB;
@@ -67,6 +77,11 @@
         background-color: transparent;
         color: #414552;
     }
+}
+
+.container-profile .error-message{
+    font-size: 17px;
+    color: red;
 }
 
 .edit-data:hover i{

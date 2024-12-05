@@ -2,13 +2,27 @@ import '../Styles/header.css'
 
 import AuthorizedNavMenu from "./AuthorizedNavMenu";
 import NoneAuthorizedNavMenu from "./NoneAuthorizedNavMenu";
+import AuthorizationControllerProxy from "../controllers/AuthorizationControllerProxy"
 
 import { Navbar, Nav, Container } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function NaviBar(){
-  const [isAuth, SetAuth] = useState(true);
+  
+  const [isAuth, setAuth] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const controller = new AuthorizationControllerProxy();
+    const checkAuthorization = async () => {
+      const response = await controller.checkValid();
+      setAuth(response);
+    };
+
+    checkAuthorization();
+  }, [location.pathname])
+
   
   return (
       <Navbar collapseOnSelect expand="xl" className="navbar-dark header-color">
@@ -18,8 +32,10 @@ export default function NaviBar(){
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <NavLink className="nav-link" to="/">Главная</NavLink>
+            <NavLink className="nav-link" to="/resumes">Резюме</NavLink>
+            <NavLink className="nav-link" to="/orders">Заказы</NavLink>
           </Nav>
-          { isAuth ? <AuthorizedNavMenu /> : <NoneAuthorizedNavMenu /> }
+          {  isAuth ? <AuthorizedNavMenu /> : <NoneAuthorizedNavMenu /> }
         </Navbar.Collapse>
       </Container>
     </Navbar> 

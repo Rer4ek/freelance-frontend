@@ -6,18 +6,8 @@ import CardCarousel from "../components/CardCarousel";
 import WorkerCard from "../components/WorkerCard";
 import Marquee from "react-fast-marquee";
 import SimpleCard from "../components/SimpleCard";
-import { useEffect } from "react";
-import { fetchUsers } from "../services/UserService";
 
 export default function HomePage(){
-
-    useEffect(() => {
-        const fetchData = async () => {
-            await fetchUsers();
-        }
-        fetchData();
-    }, [])
-
     return (
         <div id="wrapper">
 

@@ -1,21 +1,91 @@
 import "../styles/ProfilePage.css"
 
-import { Image, Form, Button } from "react-bootstrap";
-import { useState } from "react";
+import { Image, Form, Button, Modal } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { replaceNulls } from "../utils/Nulls";
 
-import demo from "../assets/react.svg";
 import LabledInput from "../components/LabledInput";
+import UserControllerProxy from "../controllers/UserControllerProxy";
+import { b64toBlob, GetFileList } from "../utils/Files";
 
 export default function EditProfileForm(){
-    let [profilePhoto, setPhoto] = useState(demo);
+    const [profilePhoto, setPhoto] = useState();
+    const [error, setError] = useState("");
 
-    const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        setPhoto(URL.createObjectURL(file));
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const [user, setUser] = useState({
+        "name": "",
+        "description": "",
+        "resume": "",
+        "photo": "",
+        "password": "",
+        "login": ""
+    });
+
+    const location = useLocation();
+
+    const userContoller = new UserControllerProxy();
+    useEffect(() => {
+        const getUser = async () => {
+            const userContoller = new UserControllerProxy();
+
+            const userResponse = await userContoller.getUserBySession();
+
+            const imageBlob = b64toBlob(userResponse.photo.fileContents, userResponse.photo.contentType);
+            document.forms.edit.Photo.files = GetFileList(imageBlob, userResponse.photo.fileDownloadName);
+            const photoUrl = URL.createObjectURL(imageBlob);
+            
+            if (userResponse.resume !== null){
+                const resumeBlob = b64toBlob(userResponse.resume.fileContents, userResponse.resume.contentType);
+                document.forms.edit.Resume.files = GetFileList(resumeBlob, userResponse.resume.fileDownloadName);
+            }
+            
+
+            setUser(replaceNulls({...userResponse, password: ""}));
+            setPhoto(photoUrl);
+        };
+
+        getUser();
+    }, [location.pathname])
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file !== undefined)
+        {
+            setPhoto(URL.createObjectURL(file));
+        }
+
     };
 
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        const userForm = new FormData(e.target);
+        userForm.append("Login", user.login);
+        try {
+            await userContoller.updateUser(user.id, userForm);
+            handleShow();
+        } catch (error) {
+            console.log(error);
+            
+        }
+
+    }
+
     return (
-        <Form className="edit-form">
+        <>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                <Modal.Title>Данные обновлены</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Успешный успех!</Modal.Body>
+            </Modal>
+
+        <Form name="edit" className="edit-form" onSubmit={onSubmit}>
             <div className="edit-data">
                 <div className="underline">
                     <LabledInput labelClassName="input-data-label" 
@@ -24,6 +94,11 @@ export default function EditProfileForm(){
                                     type="text" id="input-name"
                                     helpTitle="Укажите ваше настоящие имя"
                                     labelTitle="Имя"
+                                    onChange={(e) => setUser({...user, name: e.target.value})}
+                                    value={user.name}
+                                    name="Name"
+                                    minLength="3" maxLength='50'
+                                    required
                     />
                 </div>
                 <div className="underline">
@@ -34,6 +109,10 @@ export default function EditProfileForm(){
                                     helpTitle="Тут вы можете кратко описать себя"
                                     labelTitle="Опиcание"
                                     rows="4"
+                                    onChange={(e) => setUser({...user, description: e.target.value})}
+                                    value={user.description}
+                                    name="Description"
+                                    maxLength='500'
                     />
                 </div>
                 <div className="underline">
@@ -43,6 +122,11 @@ export default function EditProfileForm(){
                                     type="password" id="input-password"
                                     helpTitle="Это пароль"
                                     labelTitle="Пароль"
+                                    onChange={(e) => setUser({...user, password: e.target.value})}
+                                    value={user.password}
+                                    name="Password"
+                                    minLength="6" maxLength='50'
+                                    required
                     />
                 </div>
                 <div className="complete underline">
@@ -53,9 +137,11 @@ export default function EditProfileForm(){
                                     helpTitle="Выбрать файл формата: .svg .aye"
                                     labelTitle="Резюме"
                                     accept=".docx"
+                                    name="Resume"
                     />
                 </div>
                 <Button type="submit" className="button">Применить</Button>
+                <h4 className="error-message">{error}</h4>
             </div>
             <div>
                 <div className="edit-photo">
@@ -68,9 +154,12 @@ export default function EditProfileForm(){
                                     helpTitle="Выбрать файл формата: .svg .aye"
                                     accept="image/png, image/jpeg"
                                     onChange={handleFileChange}
+                                    name="Photo"
                     />
                 </div>
             </div>
         </Form>
+        </>
+        
     );
   }

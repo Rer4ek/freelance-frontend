@@ -1,0 +1,29 @@
+.resumes {
+    display: flex;
+    flex-direction: row;
+}
+
+.resumes .filters {
+    display: block;
+    width: 200px;
+    padding-top: 50px;
+    flex: auto;
+    border-right: solid rgba(228, 228, 228, 0.595) 3px;
+    height: 100vh;
+}
+
+.resumes .filters p{
+    text-align: center;
+    font-size: 100%;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.resumes .filters .labels {
+    padding-left: 10px;
+    padding-top: 15px;
+}
+
+.resumes .list {
+    display: block;
+}

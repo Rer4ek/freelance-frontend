@@ -7,6 +7,7 @@ import SingInPage from './pages/SingInPage';
 import Layout from './components/Layout';
 import ProfilePage from "./pages/ProfilePage";
 import HomePage from "./pages/HomePage";
+import ResumesPage from './pages/ResumesPage';
 
 
 function App() {
@@ -16,11 +17,12 @@ function App() {
         <Routes>
           <Route path='/' element={<Layout/>}>
             <Route index element={<HomePage/>}/>
-            <Route path='singin' element={<SingInPage/>}></Route>
-            <Route path='profile' element={<ProfilePage/>}></Route>
-            <Route path='settings' element={<SingInPage/>}></Route>
+            <Route path='settings' element={<ProfilePage/>}></Route>
+            <Route path='profile' element={<SingInPage/>}></Route>
             <Route path='my-orders' element={<SingInPage/>}></Route>
+            <Route path='resumes' element={<ResumesPage/>}></Route>
           </Route>
+          <Route path='singin' element={<SingInPage/>}></Route>
           <Route path='register' element={<RegisterPage/>}/>
         </Routes>
       </>
