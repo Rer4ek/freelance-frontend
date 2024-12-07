@@ -1,6 +1,7 @@
 import "../styles/resumesPage.css"
 
-import { Container, Form, ListGroup } from "react-bootstrap";
+import { Button, Container, Form, Image, ListGroup } from "react-bootstrap";
+import demo from "../images/backgrounds/lev.jpg"
 
 export default function ResumesPage(){
     return (
@@ -31,18 +32,19 @@ export default function ResumesPage(){
               </Form>
             </Container>
             <Container className="list">
-              <ListGroup>
-                Ку 
-              </ListGroup>
-              <ListGroup>
-                Ку 
-              </ListGroup>
-              <ListGroup>
-                Ку 
-              </ListGroup>
-              <ListGroup>
-                Ку 
-              </ListGroup>
+            <ListGroup>
+              <ListGroup.Item>
+                <Container className="list-item-container">
+                  <Image  className="photo" rounded  src={demo}></Image>
+                  <Container className="resume-info">
+                    <h3>Никита</h3>
+                    <p>Люблю кушать пиццуЛюблю кушать пиццуЛюблю кушать пиццуЛюблю кушать пиццуЛюблю кушать пиццу</p>
+                    <Button>Просмотреть</Button>
+                  </Container>
+                </Container>
+              </ListGroup.Item> 
+              
+            </ListGroup>
             </Container>
           </Container>
         </div>

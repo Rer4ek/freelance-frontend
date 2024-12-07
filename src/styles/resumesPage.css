@@ -8,7 +8,6 @@
     width: 200px;
     padding-top: 50px;
     flex: auto;
-    border-right: solid rgba(228, 228, 228, 0.595) 3px;
     height: 100vh;
 }
 
@@ -25,5 +24,51 @@
 }
 
 .resumes .list {
+    margin-top: 45px;
+    height: 80vh;
+    overflow: auto;
+    display: block;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+      }
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+      }
+    &::-webkit-scrollbar-thumb {
+        background-color: #414552;
+        border-radius: 20px; 
+      }
+}
+
+
+
+.list .list-item-container{
+    display: flex;
+    padding: 10px;
+}
+
+.list .photo {
+    max-width: 100px;
+    max-width: 100px;
+    object-fit: cover;
+}
+
+.resume-info {
+    flex: 1;
+    padding-left: 10px;
+}
+
+.resume-info {
+    padding-left: 10px;
+    overflow: hidden; 
     display: block;
 }
+
+.resume-info p{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
